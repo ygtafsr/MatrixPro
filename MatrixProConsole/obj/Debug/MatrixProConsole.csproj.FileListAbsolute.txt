@@ -1,0 +1,8 @@
+C:\Users\yiğit\Desktop\MatrixPro\MatrixProConsole\bin\Debug\MatrixProConsole.exe.config
+C:\Users\yiğit\Desktop\MatrixPro\MatrixProConsole\bin\Debug\MatrixProConsole.exe
+C:\Users\yiğit\Desktop\MatrixPro\MatrixProConsole\bin\Debug\MatrixProConsole.pdb
+C:\Users\yiğit\Desktop\MatrixPro\MatrixProConsole\bin\Debug\LinearAlgebra.dll
+C:\Users\yiğit\Desktop\MatrixPro\MatrixProConsole\bin\Debug\LinearAlgebra.pdb
+C:\Users\yiğit\Desktop\MatrixPro\MatrixProConsole\obj\Debug\MatrixProConsole.csprojResolveAssemblyReference.cache
+C:\Users\yiğit\Desktop\MatrixPro\MatrixProConsole\obj\Debug\MatrixProConsole.exe
+C:\Users\yiğit\Desktop\MatrixPro\MatrixProConsole\obj\Debug\MatrixProConsole.pdb

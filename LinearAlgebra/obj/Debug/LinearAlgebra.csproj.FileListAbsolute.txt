@@ -1,0 +1,5 @@
+C:\Users\yiğit\Desktop\MatrixPro\LinearAlgebra\bin\Debug\LinearAlgebra.dll
+C:\Users\yiğit\Desktop\MatrixPro\LinearAlgebra\bin\Debug\LinearAlgebra.pdb
+C:\Users\yiğit\Desktop\MatrixPro\LinearAlgebra\obj\Debug\LinearAlgebra.dll
+C:\Users\yiğit\Desktop\MatrixPro\LinearAlgebra\obj\Debug\LinearAlgebra.pdb
+C:\Users\yiğit\Desktop\MatrixPro\LinearAlgebra\obj\Debug\LinearAlgebra.csprojResolveAssemblyReference.cache
