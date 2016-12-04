@@ -31,12 +31,12 @@ namespace MatrixProConsole
             Console.WriteLine("After Modifying Matrix Value '456' To '500' =");
             Console.WriteLine(Matrix_1);
             
-            double[] _1DArray = { 1, 2, 4, 8 };
+            double[] _1DArray = { 1, 25, 46, 85 };
 
             Matrix Matrix_2 = Matrix.SetColumnMatrix(_1DArray);
             Console.WriteLine(Matrix_2);
 
-            double[] _1DArray_2 = { 5, 4, 7, 9 };
+            double[] _1DArray_2 = { 5, 4, 781, 95236, 1, 0 };
             Matrix Matrix_3 = Matrix.SetRowMatrix(_1DArray_2);
             Console.WriteLine(Matrix_3);
 
@@ -61,26 +61,12 @@ namespace MatrixProConsole
             Matrix Matrix_5 = new Matrix(_2DArray_3);
 
             Matrix Matrix_6 = Matrix_4 * Matrix_5;
-            Console.WriteLine(Matrix_4 + " * " + Matrix_5 + " = " + Matrix_6);  // Çıktı hatalarını Düzelt. (DÜZELTİLDİ: Her durumda altlata çıktı olacaktır)
+            Console.WriteLine(Matrix_4 + " + " + Matrix_5 + " = " + Matrix_6);  // Çıktı hatalarını Düzelt.
                                                                                 //  Yanyana yazması için ToString metodunda sonda yer alan
                                                                                 //  /n ifadesini çıkar.
 
             Matrix Matrix_7 = Matrix_4 + Matrix_5;
             Console.WriteLine(Matrix_7);
-            try
-            {
-                Console.WriteLine("Matrix_3:");
-                Console.WriteLine(Matrix_3);
-                Console.WriteLine("Matrix_2:");
-                Console.WriteLine(Matrix_2);
-                Matrix Matrix_8 = Matrix_3 * Matrix_2;
-                Console.WriteLine(Matrix_8);
-            }
-            catch(Exception exc)
-            {
-                Console.WriteLine(exc.Message);
-            }
-            
 
 
 
