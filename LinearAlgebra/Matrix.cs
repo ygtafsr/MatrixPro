@@ -41,10 +41,10 @@ namespace LinearAlgebra
     //  |  5   6  | 
     //  |_       _|
 
-    public class Matrix 
+    public class Matrix : IFormattable
     {
         //  Base Double Array for Matrix<T> class
-        double[,] _baseMatrix;   
+        double[,] _baseMatrix;
 
         #region Public Properties
         public int RowLength
@@ -280,8 +280,18 @@ namespace LinearAlgebra
             return _WhiteSpace;
         }
 
-        
+
         public override string ToString()
+        {
+            return this.ToString("G", null);
+        }
+
+        public string ToString(string formatString)
+        {
+            return this.ToString(formatString, null);
+        }
+
+        public string ToString(string formatString, IFormatProvider provider)
         {
             int RowCount = _baseMatrix.GetLength(0);
             int ColumnCount = _baseMatrix.GetLength(1);
@@ -293,12 +303,15 @@ namespace LinearAlgebra
             int MaxStringLength = 0;
             int StringLengthDiff;
 
+            string PostFix = "";    //  Matris sonuna Traspoze:T, Tersi:-1 gibi son ekler eklenebilir.
+            provider = provider != null ? provider : NumberFormatInfo.InvariantInfo;
+
             //  Calculate StringMatrix and CharachterCount values
             for (int i = 0; i < RowCount; i++)
             {
                 for (int j = 0; j < ColumnCount; j++)
                 {
-                    value = String.Format(NumberFormatInfo.InvariantInfo, "{0:G}", _baseMatrix[i, j]);
+                    value = String.Format(provider, "{0:G}", _baseMatrix[i, j]);
                     StringMatrix[i, j] = value;
 
                     StringLength = value.Length;
@@ -306,7 +319,7 @@ namespace LinearAlgebra
 
                     //  Find Max Charachter Count
                     if (StringLength > MaxStringLength)
-                    {         
+                    {
                         MaxStringLength = StringLength;
                     }
                 }
@@ -316,7 +329,7 @@ namespace LinearAlgebra
             for (int i = 0; i < RowCount; i++)
             {
                 for (int j = 0; j < ColumnCount; j++)
-                {                   
+                {
                     if (CharachterCount[i, j] < MaxStringLength)
                     {
                         StringLengthDiff = MaxStringLength - CharachterCount[i, j];
@@ -331,18 +344,18 @@ namespace LinearAlgebra
 
             //  Build Result Matrix String 
             int MatrixLength = RowCount + (RowCount - 1) + 2;
-            string ResultString = "    _  " + WhiteSpaceBuilder(ColumnCount * (MaxStringLength + 3) - 3) + " _\n";
+            string ResultString = "\n    _  " + WhiteSpaceBuilder(ColumnCount * (MaxStringLength + 3) - 3) + " _  " + PostFix + "\n";
             ResultString += "   |  " + WhiteSpaceBuilder(ColumnCount * (MaxStringLength + 3) - 3) + "   |\n";
 
             for (int r = 1; r < MatrixLength; r++)
             {
-                if (r == MatrixLength - 1)
+                if (r == MatrixLength - 1)  //  Son satıra ulaşılmışsa işletilecek
                 {
-                    ResultString += "   |_ " + WhiteSpaceBuilder(ColumnCount * (MaxStringLength + 3) - 3) + "  _|\n";
+                    ResultString += "   |_ " + WhiteSpaceBuilder(ColumnCount * (MaxStringLength + 3) - 3) + "  _|\n\n";
                 }
-                else if (r % 2 == 0)
+                else if (r % 2 == 0)        //  Çift sayı indeskli çıktı satırlarında işletilecek
                     ResultString += "   |  " + WhiteSpaceBuilder(ColumnCount * (MaxStringLength + 3) - 3) + "   |\n";
-                else
+                else                        //  Tek sayı indeksli çıktı satırlarında işletilecek
                 {
                     ResultString += "   |  ";
 
@@ -357,50 +370,6 @@ namespace LinearAlgebra
 
             return ResultString;
         }
-
-        /*public string ToString(string formatString)
-        {
-            this.ToString(formatString, null);
-        }
-
-        public string ToString(string formatString,IFormatProvider provider)
-        {
-            if (formatString == null || string.Empty) formatString = "G";
-            if (provider == null) provider = new MatrixFormatInfo();
-
-            Type formatType = typeof(MatrixFormatInfo);
-            if (provider.GetFormat(formatType) == null)
-                throw new FormatException("Format is not supported.");
-            else
-            {
-                MatrixFormatInfo MFI = provider.GetFormat(formatType);
-                return MFI.Format(formatString, this, null);
-            }            
-        }*/
+        #endregion
     }
-
-    /*public class MatrixFormatInfo : IFormatProvider, ICustomFormatter
-    {
-        public object GetFormat(Type formatType)
-        {
-            return (formatType == typeof(ICustomFormatter)) ? this : null;
-        }
-
-        public string Format(string formatString,object obj, IFormatProvider provider)
-        {
-            if(obj is Matrix<T>)
-            {
-                switch (formatString)
-                {
-                    case "G":
-                        {
-
-                        }
-                }
-            }
-        }
-
-
-    }*/
-    #endregion
 }
